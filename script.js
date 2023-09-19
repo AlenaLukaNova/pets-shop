@@ -94,3 +94,15 @@ const description = document.querySelectorAll("p"); //Описание това�
 const price = document.querySelector(".price span"); //Цена
 const img = document.querySelector("img"); //Изображение
 const tags = document.querySelector(".tags"); //Контейнер для товара
+
+function makeCard(shopItems) {
+  const { title, description, img, price, tags } = shopItems;
+  const item = itemTemplate.content.cloneNode(true);
+  item.querySelector("h1").textContent = title;
+  item.querySelector("p").textContent = description;
+  item.querySelector("img").src = img;
+  item.querySelector(".price span").textContent = price;
+  item.querySelector("tags").textContent = tags;
+ 
+  return shopItems;
+}
