@@ -95,14 +95,24 @@ const price = document.querySelector(".price span"); //Цена
 const img = document.querySelector("img"); //Изображение
 const tags = document.querySelector(".tags"); //Контейнер для товара
 
+
+const firstCard = document.createElement('div');
+firstCard.classList.add('price');
+firstCard.classList.add('tags');
+
 function makeCard(shopItems) {
-  const { title, description, img, price, tags } = shopItems;
-  const item = itemTemplate.content.cloneNode(true);
-  item.querySelector("h1").textContent = title;
-  item.querySelector("p").textContent = description;
-  item.querySelector("img").src = img;
-  item.querySelector(".price span").textContent = price;
-  item.querySelector("tags").textContent = tags;
+  const { title, description, img, price, tags } = shopItems; 
+  const itemCards = itemTemplate.content.cloneNode(true);
+  itemCards.querySelector("h1").textContent = title;
+  itemCards.querySelector("p").textContent = description;
+  itemCards.querySelector("img").src = img;
+  itemCards.querySelector(".price span").textContent = price;
+  itemCards.querySelector("tags").textContent = tags;
  
-  return shopItems;
+  return itemCards;
 }
+
+items.forEach(function(item) {
+  const card = makeCard(item.title, item.description, item.img, item.price);
+  shopItems.append(card);
+});
