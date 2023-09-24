@@ -84,3 +84,35 @@ const items = [
     img: "./img/12.jpeg",
   },
 ];
+
+let newItems = [...items]; //Массив товаров для животных
+
+const shopItems = document.querySelector("#shop-items"); //Секция-контейнер
+const itemTemplate = document.querySelector("#item-template"); //Шаблон товара
+const title = document.querySelector("h1"); //Название товара
+const description = document.querySelectorAll("p"); //Описание товара
+const price = document.querySelector(".price span"); //Цена
+const img = document.querySelector("img"); //Изображение
+const tags = document.querySelector(".tags"); //Контейнер для товара
+
+
+const firstCard = document.createElement('div');
+firstCard.classList.add('price');
+firstCard.classList.add('tags');
+
+function makeCard(shopItems) {
+  const { title, description, img, price, tags } = shopItems; 
+  const itemCards = itemTemplate.content.cloneNode(true);
+  itemCards.querySelector("h1").textContent = title;
+  itemCards.querySelector("p").textContent = description;
+  itemCards.querySelector("img").src = img;
+  itemCards.querySelector(".price").textContent = price;
+  itemCards.querySelector(".tags").textContent = tags;
+ 
+  return itemCards;
+}
+
+items.forEach(function(item) {
+  const card = makeCard(item);
+  shopItems.append(card);
+});
