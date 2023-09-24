@@ -106,13 +106,13 @@ function makeCard(shopItems) {
   itemCards.querySelector("h1").textContent = title;
   itemCards.querySelector("p").textContent = description;
   itemCards.querySelector("img").src = img;
-  itemCards.querySelector(".price span").textContent = price;
-  itemCards.querySelector("tags").textContent = tags;
+  itemCards.querySelector(".price").textContent = price;
+  itemCards.querySelector(".tags").textContent = tags;
  
   return itemCards;
 }
 
 items.forEach(function(item) {
-  const card = makeCard(item.title, item.description, item.img, item.price);
+  const card = makeCard(item);
   shopItems.append(card);
 });
